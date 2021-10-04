@@ -10,13 +10,12 @@
       </mat-select>
     </mat-form-field>
     </div>
-    <div class="flex-child-btn" *ngIf="prevLink" (click)="getPreNextPage(prevLink)">
-      <button mat-mini-fab color="primary" aria-label="navigate to previous page">
+    <div class="flex-child-btn">
+      <button mat-mini-fab color="primary" *ngIf="prevLink" (click)="getPreNextPage(prevLink)" aria-label="navigate to previous page" matTooltip="navigate to previous page">
       <mat-icon>navigate_before</mat-icon>
       </button>
-    </div>
-    <div class="flex-child-btn" *ngIf="nextLink" (click)="getPreNextPage(nextLink)">
-      <button mat-mini-fab color="primary" aria-label="navigate to next page">
+      <div *ngIf="prevLink" class="seprator"></div>
+      <button mat-mini-fab color="primary" *ngIf="nextLink" (click)="getPreNextPage(nextLink)" aria-label="navigate to next page" matTooltip="navigate to next page">
         <mat-icon>navigate_next</mat-icon>
       </button>
     </div>

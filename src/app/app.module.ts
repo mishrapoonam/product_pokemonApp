@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
     MatSelectModule,
     MatIconModule,
+    MatTooltipModule,
     FlexLayoutModule,
   ],
   providers: [ProductService],

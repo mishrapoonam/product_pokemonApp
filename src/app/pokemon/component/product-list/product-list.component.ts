@@ -44,13 +44,13 @@ export class ProductListComponent implements OnInit {
     this.productList('', '', true, urlVal);
   }
 
-  public onChange(val){
-    this.limitVal = val;
+  public onChange(eve){
+    this.limitVal = eve.value;
     this.productList(this.limitVal, this.offSetVal, false, '');
   }
 
-  public onSortChange(value){
-    if(value !== ''){
+  public onSortChange(eve){
+    if(eve.value === 'Name'){
       this.productListDetails.sort((a, b) => {
         return a.name.localeCompare(b.name);
       });
