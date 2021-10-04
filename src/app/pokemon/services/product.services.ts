@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+
+import { Observable, empty } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 
 
@@ -13,8 +14,13 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
-  public getProductList(limitVal, offSetVal): Observable<any> {
-    let url =  `${this.defaultUrl}limit=${limitVal}&offset=${offSetVal}`;
+  public getProductList(limitVal, offSetVal, pagination, urlVal): Observable<any> {
+    let url = ''
+    if(pagination){
+      url = urlVal;
+    } else {
+      url = `${this.defaultUrl}limit=${limitVal}&offset=${offSetVal}`;
+    }
     let productList =  this.http.get<any>(url);
     return productList;
   }
@@ -23,5 +29,4 @@ export class ProductService {
     let productDeatils =  this.http.get<any>(param.urlVal);
     return productDeatils;
   }
-
 }

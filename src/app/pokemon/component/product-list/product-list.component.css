@@ -1,8 +1,20 @@
+.flex-container {
+  display: flex;
+}
 
+.flex-child {
+  margin : 0 17px 17px 0;
+}
+.flex-child-btn{
+  margin : 6px 17px 17px 0;
+}
+.flex-child-right{
+  margin-left: auto;
+}
 .content {
   padding: 16px;
 }
-
 .content > mat-card {
   width: 200px;
 }
+

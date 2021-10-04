@@ -3,20 +3,27 @@
    <div class="flex-child">
       <mat-form-field appearance="fill">
       <mat-label>Select Product Count</mat-label>
-      <mat-select [(ngModel)]="selProdCount">
+      <mat-select [(ngModel)]="selProdCount" (selectionChange)="onChange($event)">
         <mat-option *ngFor="let x of selectProductCount" [value]="x">
           {{x}}
         </mat-option>
       </mat-select>
     </mat-form-field>
     </div>
-    <div class="flex-child-btn">
-
+    <div class="flex-child-btn" *ngIf="prevLink" (click)="getPreNextPage(prevLink)">
+      <button mat-mini-fab color="primary" aria-label="navigate to previous page">
+      <mat-icon>navigate_before</mat-icon>
+      </button>
+    </div>
+    <div class="flex-child-btn" *ngIf="nextLink" (click)="getPreNextPage(nextLink)">
+      <button mat-mini-fab color="primary" aria-label="navigate to next page">
+        <mat-icon>navigate_next</mat-icon>
+      </button>
     </div>
     <div class="flex-child-right">
       <mat-form-field appearance="fill">
         <mat-label>Sort By</mat-label>
-        <mat-select [(ngModel)]="sortBy">
+        <mat-select [(ngModel)]="sortBy" (selectionChange)="onSortChange($event)">
           <mat-option *ngFor="let x of sortByProduct" [value]="x">
             {{x}}
           </mat-option>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../../services/product.services';
+import {ProductService} from '../../services/product.services';
 import { Product } from '../../models/product.model';
 import { Router, NavigationExtras } from '@angular/router';
 
@@ -25,22 +25,39 @@ export class ProductListComponent implements OnInit {
   public sortBy : string = '';
 
   ngOnInit(): void {
-    this.productList(this.limitVal, this.offSetVal);
+    this.productList(this.limitVal, this.offSetVal, false, '');
   }
 
-  public productList(limit, offset){
-    this.pdServcie.getProductList(limit, offset).subscribe((response)=>{
-      this.product = response;
+  public productList(limit, offset, pagination, urlVal){
+    this.pdServcie.getProductList(limit, offset, pagination, urlVal).subscribe((response)=>{
+        this.product = response;
       this.productListDetails = this.product.results;
       this.productCount = this.product.count;
       this.prevLink = this.product.previous;
       this.nextLink = this.product.next;
     }, error => {
-
       console.log(error.message);
     });
   }
 
+  public getPreNextPage(urlVal){
+    this.productList('', '', true, urlVal);
+  }
+
+  public onChange(val){
+    this.limitVal = val;
+    this.productList(this.limitVal, this.offSetVal, false, '');
+  }
+
+  public onSortChange(value){
+    if(value !== ''){
+      this.productListDetails.sort((a, b) => {
+        return a.name.localeCompare(b.name);
+      });
+    } else {
+      this.productList(this.limitVal, this.offSetVal, false, '');
+    }
+  }
   public displayProductDeatil(urlVal){
     let navigationExtras: NavigationExtras = {
       state: {
@@ -49,5 +66,6 @@ export class ProductListComponent implements OnInit {
     };
     this.router.navigate(['/productDetail'], navigationExtras);
   }
+
 
 }
