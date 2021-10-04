@@ -1,1 +1,23 @@
-<div>Product Details</div>
+<div class="content">
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div fxFlex="50%" *ngIf="productDeatils">
+      <mat-card class="mat-elevation-z4" >
+        <mat-card-header>
+          <mat-card-title>{{productDeatils.name | uppercase}}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-lg-image src="{{imageSrc}}" alt="pokemon">
+        <mat-card-content>
+          <p class='desc'>
+            Weight : {{productDeatils.weight}}
+          </p>
+          <p class='desc'>
+            Height : {{productDeatils.height}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button (click)="redirectProductPage()">Go To Product Page</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+  </div>

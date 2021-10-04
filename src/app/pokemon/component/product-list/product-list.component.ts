@@ -31,6 +31,9 @@ export class ProductListComponent implements OnInit {
       this.productCount = this.product.count;
       this.prevLink = this.product.previous;
       this.nextLink = this.product.next;
+    }, error => {
+
+      console.log(error.message);
     });
   }
 
