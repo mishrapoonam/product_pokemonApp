@@ -19,6 +19,10 @@ export class ProductListComponent implements OnInit {
   public nextLink : string = '';
   public limitVal : number = 20;
   public offSetVal : number = 0;
+  public selectProductCount = [10,20,50] ;
+  public selProdCount : number = this.selectProductCount[1];
+  public sortByProduct = ['Name', 'Attribute'];
+  public sortBy : string = '';
 
   ngOnInit(): void {
     this.productList(this.limitVal, this.offSetVal);
