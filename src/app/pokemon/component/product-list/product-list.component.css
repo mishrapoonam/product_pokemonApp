@@ -1,39 +1,8 @@
-.flex-container {
-  display: flex;
-}
 
-.flex-child {
-  margin : 0 17px 17px 0;
-}
-.flex-child-btn{
-  margin : 6px 17px 17px 0;
-}
-.flex-child-right{
-  margin-left: auto;
-}
 .content {
   padding: 16px;
 }
 
 .content > mat-card {
   width: 200px;
-}
-.seprator {
-    display: inline-block;
-    border-left: 2px solid #ccc;
-    margin: 0px 10px -10px 10px;
-    height: 36px;
-}
-
-@media only screen and (max-width: 480px) {
-  .flex-container {
-    display: flex;
-    flex-direction: column;
-  }
-  .flex-child, .flex-child-right{
-    margin : 0;
-  }
-  .flex-child-btn{
-    margin : 0 0 10px 0;
-  }
 }

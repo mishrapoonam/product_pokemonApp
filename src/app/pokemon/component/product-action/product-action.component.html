@@ -1,0 +1,31 @@
+<div class="flex-container">
+  <div class="flex-child" *ngIf="sortFeature">
+     <mat-form-field appearance="fill">
+     <mat-label>Select Product Count</mat-label>
+     <mat-select [(ngModel)]="selProdCount" (selectionChange)="onChange($event)">
+       <mat-option *ngFor="let x of selectProductCount" [value]="x">
+         {{x}}
+       </mat-option>
+     </mat-select>
+   </mat-form-field>
+   </div>
+   <div class="flex-child-btn">
+     <button mat-mini-fab color="primary" *ngIf="prevLink" (click)="getPreNextPage(prevLink)" aria-label="navigate to previous page" matTooltip="navigate to previous page">
+     <mat-icon>navigate_before</mat-icon>
+     </button>
+     <div *ngIf="prevLink" class="seprator"></div>
+     <button mat-mini-fab color="primary" *ngIf="nextLink" (click)="getPreNextPage(nextLink)" aria-label="navigate to next page" matTooltip="navigate to next page">
+       <mat-icon>navigate_next</mat-icon>
+     </button>
+   </div>
+   <div class="flex-child-right" *ngIf="sortFeature">
+     <mat-form-field appearance="fill">
+       <mat-label>Sort By</mat-label>
+       <mat-select [(ngModel)]="sortBy" (selectionChange)="onSortChange($event)">
+         <mat-option *ngFor="let x of sortByProduct" [value]="x">
+           {{x}}
+         </mat-option>
+       </mat-select>
+     </mat-form-field>
+   </div>
+ </div>

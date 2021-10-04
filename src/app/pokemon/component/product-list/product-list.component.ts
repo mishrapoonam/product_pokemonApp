@@ -30,7 +30,7 @@ export class ProductListComponent implements OnInit {
 
   public productList(limit, offset, pagination, urlVal){
     this.pdServcie.getProductList(limit, offset, pagination, urlVal).subscribe((response)=>{
-        this.product = response;
+      this.product = response;
       this.productListDetails = this.product.results;
       this.productCount = this.product.count;
       this.prevLink = this.product.previous;

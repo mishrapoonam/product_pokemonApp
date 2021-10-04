@@ -1,48 +1,31 @@
 <div class="content">
-  <div class="flex-container">
-   <div class="flex-child">
-      <mat-form-field appearance="fill">
-      <mat-label>Select Product Count</mat-label>
-      <mat-select [(ngModel)]="selProdCount" (selectionChange)="onChange($event)">
-        <mat-option *ngFor="let x of selectProductCount" [value]="x">
-          {{x}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+  <app-product-action
+    [prevLink]="prevLink" [nextLink]="nextLink"
+    (onCountChange)="onChange($event)"
+    (onSortTypeChange)="onSortChange($event)"
+    (onPreNextPage)="getPreNextPage($event)">
+  </app-product-action>
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+      <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let product of productListDetails">
+        <mat-card class="mat-elevation-z4" >
+          <mat-card-header>
+            <mat-card-title>{{product.name | uppercase}}</mat-card-title>
+          </mat-card-header>
+          <img mat-card-md-image src="../../../../assets/images/pokemon.png">
+          <mat-card-content>
+            <mat-card-actions>
+              <button mat-button (click)="displayProductDeatil(product.url)">View Product Detail</button>
+            </mat-card-actions>
+          </mat-card-content>
+        </mat-card>
+      </div>
     </div>
-    <div class="flex-child-btn">
-      <button mat-mini-fab color="primary" *ngIf="prevLink" (click)="getPreNextPage(prevLink)" aria-label="navigate to previous page" matTooltip="navigate to previous page">
-      <mat-icon>navigate_before</mat-icon>
-      </button>
-      <div *ngIf="prevLink" class="seprator"></div>
-      <button mat-mini-fab color="primary" *ngIf="nextLink" (click)="getPreNextPage(nextLink)" aria-label="navigate to next page" matTooltip="navigate to next page">
-        <mat-icon>navigate_next</mat-icon>
-      </button>
+    <div>
+
     </div>
-    <div class="flex-child-right">
-      <mat-form-field appearance="fill">
-        <mat-label>Sort By</mat-label>
-        <mat-select [(ngModel)]="sortBy" (selectionChange)="onSortChange($event)">
-          <mat-option *ngFor="let x of sortByProduct" [value]="x">
-            {{x}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-  </div>
-  <div fxLayout="row wrap" fxLayoutGap="16px grid">
-    <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let product of productListDetails">
-      <mat-card class="mat-elevation-z4" >
-        <mat-card-header>
-          <mat-card-title>{{product.name | uppercase}}</mat-card-title>
-        </mat-card-header>
-        <img mat-card-md-image src="../../../../assets/images/pokemon.png">
-        <mat-card-content>
-          <mat-card-actions>
-            <button mat-button (click)="displayProductDeatil(product.url)">View Product Detail</button>
-          </mat-card-actions>
-        </mat-card-content>
-      </mat-card>
-    </div>
-  </div>
-  </div>
+    <app-product-action
+    [prevLink]="prevLink" [nextLink]="nextLink" [sortFeature]="false"
+    (onCountChange)="onChange($event)"
+    (onPreNextPage)="getPreNextPage($event)">
+    </app-product-action>
+</div>
